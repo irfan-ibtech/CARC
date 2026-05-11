@@ -13,7 +13,7 @@ export function Hero() {
   const opacityContent = useTransform(scrollY, [0, 400], [1, 0]);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-10">
       <MountainParallax />
 
       {/* Content */}

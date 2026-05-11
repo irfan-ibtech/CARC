@@ -1,7 +1,8 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import { useRef } from "react";
+import { MountainParallax } from "@/components/animations/MountainParallax";
 
 interface PageHeaderProps {
   title: string;
@@ -10,26 +11,11 @@ interface PageHeaderProps {
 
 export function PageHeader({ title, subtitle }: PageHeaderProps) {
   const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start start", "end start"],
-  });
-
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
-  const opacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
 
   return (
-    <section ref={ref} className="relative pt-48 pb-32 px-6 overflow-hidden bg-black flex items-center justify-center">
+    <section ref={ref} className="relative min-h-screen pt-40 pb-16 px-6 overflow-hidden bg-black flex items-start justify-center text-center">
       {/* Background Parallax */}
-      <motion.div style={{ y, opacity }} className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-gradient-to-b from-primary/10 via-background to-background" />
-        {/* Abstract Mountain Silhouette */}
-        <div className="absolute bottom-0 w-full opacity-20">
-          <svg viewBox="0 0 1440 320" className="w-full h-auto text-primary">
-            <path d="M0 320L120 280L240 300L360 220L480 260L600 140L720 200L840 80L960 180L1080 120L1200 240L1320 140L1440 280V320H0Z" fill="currentColor" />
-          </svg>
-        </div>
-      </motion.div>
+      <MountainParallax />
 
       <div className="max-w-7xl mx-auto relative z-10 text-center">
         <motion.div
@@ -62,6 +48,23 @@ export function PageHeader({ title, subtitle }: PageHeaderProps) {
           {subtitle}
         </motion.p>
       </div>
+
+      {/* Scroll Indicator */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.2, duration: 1 }}
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 z-30"
+      >
+        <span className="text-[10px] uppercase tracking-widest opacity-60 font-black text-white">Scroll to Explore</span>
+        <motion.div
+          animate={{ y: [0, 8, 0] }}
+          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+          className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center p-1"
+        >
+          <motion.div className="w-1 h-2 bg-primary rounded-full shadow-[0_0_10px_var(--primary)]" />
+        </motion.div>
+      </motion.div>
 
       {/* Grain Texture */}
       <div className="absolute inset-0 pointer-events-none opacity-20 mix-blend-soft-light bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />

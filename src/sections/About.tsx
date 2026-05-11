@@ -93,7 +93,7 @@ export function About() {
             </div>
           </motion.div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 relative">
+          <div className="grid grid-cols-2 gap-4 md:gap-8 relative">
             {/* 3D Accent Overlay for Mobile */}
             <div className="lg:hidden absolute inset-0 z-[-1] opacity-20">
               <FloatingCompass />
@@ -107,14 +107,14 @@ export function About() {
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1, duration: 0.8 }}
               >
-                <Card className="bg-secondary/40 backdrop-blur-xl border-white/5 hover:border-primary/30 transition-all duration-500 group overflow-hidden h-full rounded-[2.5rem]">
-                  <CardContent className="p-10 space-y-6">
-                    <div className={`w-16 h-16 ${item.bg} rounded-2xl flex items-center justify-center ${item.color} group-hover:scale-110 transition-transform duration-500 border border-white/5`}>
-                      <item.icon className="w-8 h-8" />
+                <Card className="bg-secondary/40 backdrop-blur-xl border-white/5 hover:border-primary/30 transition-all duration-500 group overflow-hidden h-full rounded-[1.5rem] md:rounded-[2.5rem]">
+                  <CardContent className="p-6 md:p-10 space-y-4 md:space-y-6">
+                    <div className={`w-12 h-12 md:w-16 md:h-16 ${item.bg} rounded-xl md:rounded-2xl flex items-center justify-center ${item.color} group-hover:scale-110 transition-transform duration-500 border border-white/5`}>
+                      <item.icon className="w-6 h-6 md:w-8 md:h-8" />
                     </div>
-                    <div className="space-y-3">
-                      <h3 className="text-2xl font-bold font-heading group-hover:text-primary transition-colors">{item.title}</h3>
-                      <p className="text-sm text-foreground/40 leading-relaxed">
+                    <div className="space-y-2 md:space-y-3">
+                      <h3 className="text-lg md:text-2xl font-bold font-heading group-hover:text-primary transition-colors leading-tight">{item.title}</h3>
+                      <p className="text-[10px] md:text-sm text-foreground/40 leading-relaxed line-clamp-2 md:line-clamp-none">
                         {item.desc}
                       </p>
                     </div>

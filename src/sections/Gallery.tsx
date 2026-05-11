@@ -90,7 +90,7 @@ export function Gallery() {
         </p>
       </div>
 
-      <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 auto-rows-[200px] md:auto-rows-[250px]">
+      <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 auto-rows-[200px] md:auto-rows-[250px]">
         {images.map((item, i) => (
           <Dialog key={item.id}>
             <DialogTrigger
